@@ -2,45 +2,36 @@
 .terraform/
 *.tfstate
 *.tfstate.*
-*.tfvars
-!*.tfvars.example
-crash.log
-override.tf
-.terraformrc
-
-# AWS
-.aws/
-*.pem
-*.key
-*.pub
+.terraform.lock.hcl
+terraform.tfvars
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
-venv/
+*.so
+.Python
 env/
-.venv
+venv/
+*.egg-info/
 .pytest_cache/
-.coverage
-htmlcov/
 
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
-*.swo
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Secrets
-*.secret
-.env
-!.env.example
-secrets/
-
 # Logs
 *.log
-logs/
+
+# Test database
+test.db
+
+# Environment
+.env
+.env.local
+.goutputstream-ZJIOP3

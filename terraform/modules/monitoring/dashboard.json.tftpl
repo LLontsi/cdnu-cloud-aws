@@ -1,0 +1,31 @@
+{
+  "widgets": [
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 24,
+      "height": 1,
+      "properties": {
+        "markdown": "# 🏥 CDNU Cloud - Health Dashboard"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 1,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/EC2", "CPUUtilization"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "${region}",
+        "title": "EC2 - CPU Overview",
+        "period": 300
+      }
+    }
+  ]
+}

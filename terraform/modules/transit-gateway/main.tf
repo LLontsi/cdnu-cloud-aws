@@ -5,17 +5,17 @@
 
 resource "aws_ec2_transit_gateway" "main" {
   description = "Transit Gateway Hub pour 11 CDNU"
-  
+
   # Configuration réseau
   amazon_side_asn                 = 64512
   default_route_table_association = "enable"
   default_route_table_propagation = "enable"
-  
+
   # Features
-  dns_support                     = "enable"
+  dns_support                    = "enable"
   vpn_ecmp_support               = "disable"
   auto_accept_shared_attachments = "enable"
-  
+
   tags = {
     Name        = "${var.project_name}-transit-gateway"
     Environment = var.environment
@@ -27,11 +27,12 @@ resource "aws_ec2_transit_gateway" "main" {
 # Route Table Transit Gateway
 resource "aws_ec2_transit_gateway_route_table" "main" {
   transit_gateway_id = aws_ec2_transit_gateway.main.id
-  
+
   tags = {
     Name        = "${var.project_name}-tgw-rt"
     Environment = var.environment
   }
+  
 }
 
 # Route par défaut (si besoin de routage Internet via NAT centralisé)

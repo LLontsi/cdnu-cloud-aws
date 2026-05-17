@@ -1,0 +1,48 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "FullAccessWithMFA",
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "*",
+      "Condition": {
+        "Bool": {
+          "aws:MultiFactorAuthPresent": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyDangerousActionsWithoutMFA",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:TerminateInstances",
+        "rds:DeleteDBInstance",
+        "s3:DeleteBucket",
+        "iam:DeleteUser",
+        "iam:DeleteRole"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Bool": {
+          "aws:MultiFactorAuthPresent": "false"
+        }
+      }
+    },
+    {
+      "Sid": "ReadOnlyWithoutMFA",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:Describe*",
+        "rds:Describe*",
+        "s3:List*",
+        "s3:Get*",
+        "iam:Get*",
+        "iam:List*",
+        "cloudwatch:*",
+        "logs:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+NETWORK TOPOLOGY (ASCII)
+========================
+
+Region eu-central-1
+┌────────────────────────────────┐
+│  Transit Gateway              │
+│    ├─ VPC Yaoundé (10.0/16)  │
+│    ├─ VPC Douala (10.1/16)   │
+│    ├─ VPC Buea (10.2/16)     │
+│    └─ VPC Ngaoundéré (10.3/16)│
+└────────────────────────────────┘
+
+Region eu-west-3
+┌────────────────────────────────┐
+│  Transit Gateway              │
+│    ├─ VPC Maroua (10.4/16)   │
+│    ├─ VPC Garoua (10.5/16)   │
+│    ├─ VPC Bamenda (10.6/16)  │
+│    └─ VPC Bafoussam (10.7/16)│
+└────────────────────────────────┘
+
+Region eu-west-1
+┌────────────────────────────────┐
+│  Transit Gateway              │
+│    ├─ VPC Bertoua (10.8/16)  │
+│    ├─ VPC Ebolowa (10.9/16)  │
+│    └─ VPC Kribi (10.10/16)   │
+└────────────────────────────────┘

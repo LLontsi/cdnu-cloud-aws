@@ -46,77 +46,11 @@ variable "cdnu_configs" {
     vpc_cidr      = string
     instance_type = string
     az            = string
+    region        = string
     deploy        = bool
   }))
-  
-  default = {
-    yaounde = {
-      vpc_cidr      = "10.0.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1a"
-      deploy        = true
-    }
-    douala = {
-      vpc_cidr      = "10.1.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1b"
-      deploy        = true
-    }
-    buea = {
-      vpc_cidr      = "10.2.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1c"
-      deploy        = true
-    }
-    ngaoundere = {
-      vpc_cidr      = "10.3.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1a"
-      deploy        = true
-    }
-    maroua = {
-      vpc_cidr      = "10.4.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1b"
-      deploy        = true
-    }
-    garoua = {
-      vpc_cidr      = "10.5.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1c"
-      deploy        = true
-    }
-    bamenda = {
-      vpc_cidr      = "10.6.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1a"
-      deploy        = true
-    }
-    bafoussam = {
-      vpc_cidr      = "10.7.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1b"
-      deploy        = true
-    }
-    bertoua = {
-      vpc_cidr      = "10.8.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1c"
-      deploy        = true
-    }
-    ebolowa = {
-      vpc_cidr      = "10.9.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1a"
-      deploy        = true
-    }
-    kribi = {
-      vpc_cidr      = "10.10.0.0/16"
-      instance_type = "t3.micro"
-      az            = "eu-central-1b"
-      deploy        = true
-    }
-  }
+
+
 }
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -160,4 +94,26 @@ variable "db_password" {
 variable "alarm_email" {
   description = "Email pour recevoir les alarmes CloudWatch"
   type        = string
+}
+variable "multi_az" {
+  description = "Enable Multi-AZ deployment"
+  type        = bool
+  default     = true
+}
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# VARIABLES ADDITIONNELLES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+variable "db_database_name" {
+  description = "Nom de la base de données PostgreSQL"
+  type        = string
+  default     = "cdnu_db"
+}
+
+variable "alarm_phone" {
+  description = "Numéro de téléphone pour SMS alerts (format: +237...)"
+  type        = string
+  default     = ""
 }

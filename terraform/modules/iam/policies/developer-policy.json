@@ -1,0 +1,74 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadOnlyAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:Describe*",
+        "rds:Describe*",
+        "s3:List*",
+        "s3:Get*",
+        "ecs:Describe*",
+        "ecs:List*",
+        "lambda:Get*",
+        "lambda:List*",
+        "cloudwatch:Describe*",
+        "cloudwatch:Get*",
+        "cloudwatch:List*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchLogsRead",
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:GetLogEvents",
+        "logs:FilterLogEvents"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SSMSessionManager",
+      "Effect": "Allow",
+      "Action": [
+        "ssm:StartSession",
+        "ssm:TerminateSession",
+        "ssm:ResumeSession",
+        "ssm:DescribeSessions",
+        "ssm:GetConnectionStatus"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ssm:*:*:session/${aws:username}-*"
+      ],
+      "Condition": {
+        "StringLike": {
+          "ssm:resourceTag/Project": "CDNU-Cloud"
+        }
+      }
+    },
+    {
+      "Sid": "SecretsManagerReadOnly",
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": "arn:aws:secretsmanager:*:*:secret:cdnu-cloud/dev/*"
+    },
+    {
+      "Sid": "XRayRead",
+      "Effect": "Allow",
+      "Action": [
+        "xray:GetTraceSummaries",
+        "xray:GetTraceGraph",
+        "xray:GetServiceGraph",
+        "xray:BatchGetTraces"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

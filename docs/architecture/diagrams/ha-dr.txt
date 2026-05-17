@@ -1,0 +1,15 @@
+HIGH AVAILABILITY & DR (ASCII)
+==============================
+
+CURRENT SETUP:
+- RDS: Single-AZ (eu-central-1)
+- ECS: Multi-AZ automatic (Fargate)
+- Transit Gateway: Multi-AZ automatic
+
+RPO: 24 hours (daily snapshots)
+RTO: 1-2 hours (manual restore)
+
+RECOMMENDED IMPROVEMENTS:
+- RDS Multi-AZ: RPO < 5 min, RTO < 1 min
+- Read Replicas: Cross-region
+- Multi-region active-active ALB

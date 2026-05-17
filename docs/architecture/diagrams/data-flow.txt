@@ -1,0 +1,24 @@
+DATA FLOW DIAGRAM (ASCII)
+=========================
+
+User Request
+     |
+     v
+┌─────────────┐
+│     ALB     │ HTTPS:443
+│  (Public)   │
+└─────────────┘
+     |
+     v
+┌─────────────┐
+│  ECS Task   │ HTTP:8000
+│  (Private)  │
+└─────────────┘
+     |
+     ├──────> RDS PostgreSQL (5432)
+     |
+     ├──────> S3 Buckets
+     |
+     └──────> CloudWatch Logs
+
+Response flows back through same path

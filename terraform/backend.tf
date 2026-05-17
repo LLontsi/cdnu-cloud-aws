@@ -6,17 +6,17 @@ terraform {
   backend "s3" {
     # TODO: Remplacer VOTRE-ACCOUNT-ID par votre ID de compte AWS
     # Obtenir avec: aws sts get-caller-identity --query Account --output text
-    bucket = "cdnu-terraform-state-VOTRE-ACCOUNT-ID"
-    
+    bucket = "cdnu-terraform-state-1587096406"
+
     key    = "production/terraform.tfstate"
     region = "eu-central-1"
-    
+
     # Encryption du state
     encrypt = true
-    
+
     # Table DynamoDB pour le verrouillage
     dynamodb_table = "cdnu-terraform-locks"
-    
+
     # Tags du bucket
     # (appliqués lors de la création du bucket S3)
   }
